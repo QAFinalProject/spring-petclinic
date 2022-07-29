@@ -5,6 +5,7 @@ pipeline {
             steps {
                 git 'https://github.com/QAFinalProject/spring-petclinic-rest.git'
                 sh 'sudo docker run -d -p 9966:9966 springcommunity/spring-petclinic-rest'
+                
             }
         }
         stage('Deploy frontend') {
