@@ -33,7 +33,8 @@ pipeline {
         }
         stage('Deploy nginx') {
             steps {
-            sh 'ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.134.141.28 sudo docker run -d -p 80:80 --name nginx --mount type=bind,source=$(pwd)/nginx.conf,target=/etc/nginx/nginx.conf nginx'
+            sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/nginx.conf ubuntu@18.134.141.28:/home/ubuntu/
+            ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.134.141.28 sudo docker run -d -p 80:80 --name nginx --mount type=bind,source=$(pwd)/nginx.conf,target=/etc/nginx/nginx.conf nginx'''
             }
         }
     }
