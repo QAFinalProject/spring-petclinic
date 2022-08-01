@@ -4,6 +4,7 @@ pipeline {
         stage('Clone down functional files') {
             steps {
                 sh '''cd ~
+                rm -rf sping-petclinic
                 git clone https://github.com/QAFinalProject/spring-petclinic.git'''
             }
         }
