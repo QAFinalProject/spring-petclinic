@@ -23,8 +23,8 @@ pipeline {
         stage('Deploy frontend') {
             steps {
                 git branch: 'master', url: 'https://github.com/QAFinalProject/spring-petclinic-angular.git'
-                sh '''docker image prune
-                docker system prune --all --volumes --force
+                sh '''sudo docker image prune -y
+                sudo docker system prune --all --volumes --force
                 sudo docker build -t jamalh8/spring-petclinic-angular:latest .
                 docker login --username $DOCKER_HUB_CREDS_USR --password $DOCKER_HUB_CREDS_PSW
                 docker push jamalh8/spring-petclinic-angular:latest
