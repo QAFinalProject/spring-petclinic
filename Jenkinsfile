@@ -4,7 +4,7 @@ pipeline {
         stage('Clone down functional files') {
             steps {
                 git branch: 'main', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
-                sh 'scp docker-check-script.sh -i /home/ubuntu/.ssh/aws-key-london.pem ubuntu@35.177.8.124:/home/ubuntu/'   
+                sh 'scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-check-script.sh ubuntu@35.177.8.124:/home/ubuntu/'   
             }
         }
         
