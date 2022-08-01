@@ -1,8 +1,16 @@
 pipeline {
     agent any
     stages {
+        stage('Clone down functional files') {
+            steps {
+                sh '''cd ~
+                git clone https://github.com/QAFinalProject/spring-petclinic.git'''
+            }
+        }
+        
         stage('Deploy backend') {
             steps {
+                
                 git 'https://github.com/QAFinalProject/spring-petclinic-rest.git'
                 sh 'cd ~/spring-petclinic'
                 sh 'sudo chmod +x docker-check-script.sh'
