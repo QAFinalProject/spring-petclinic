@@ -5,21 +5,21 @@ pipeline {
         DOCKER_HUB_CREDS_PSW = credentials('DOCKER_HUB_PSW')
     }
     stages {
-        // stage('Clone down functional files') {
-        //     steps {
-        //         git branch: 'main', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
-        //         sh 'sudo apt update'
-        //         sh 'scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-check-script.sh ubuntu@3.10.246.212:/home/ubuntu/'   
-        //     }
-        // } 
+        stage('Clone down functional files') {
+            steps {
+                git branch: 'main', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
+                sh 'sudo apt update'
+                sh 'scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-check-script.sh ubuntu@3.10.246.212:/home/ubuntu/'   
+            }
+        } 
 
-        // stage('Deploy backend') {
-        //     steps {              
-        //         git 'https://github.com/QAFinalProject/spring-petclinic-rest.git'
-        //         sh '''ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@3.10.246.212 sudo chmod +x docker-check-script.sh
-        //         ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@3.10.246.212 ./docker-check-script.sh'''
-        //     }
-        // }
+        stage('Deploy backend') {
+            steps {              
+                git 'https://github.com/QAFinalProject/spring-petclinic-rest.git'
+                sh '''ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@3.10.246.212 sudo chmod +x docker-check-script.sh
+                ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@3.10.246.212 ./docker-check-script.sh'''
+            }
+        }
         stage('Deploy frontend') {
             steps {
                 git branch: 'master', url: 'https://github.com/QAFinalProject/spring-petclinic-angular.git'
