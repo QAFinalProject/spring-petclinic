@@ -33,9 +33,14 @@ pipeline {
         // }
                 stage('Deploy frontend') {
             steps {
+<<<<<<< HEAD
                 git branch: 'docker-compose', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
                 sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-compose.yaml ubuntu@3.10.246.212:/home/ubuntu/
                 ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@3.10.246.212 sudo docker-compose up -d'''
+=======
+            sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/nginx.conf ubuntu@18.134.141.28:/home/ubuntu/
+            ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.134.141.28 sudo docker run -d -p 80:80 --name nginx --mount type=bind,source=$(pwd)/nginx.conf,target=/etc/nginx/nginx.conf nginx'''
+>>>>>>> 198ffb4b04095b03f8d37bcdd5d4308e3965c8dc
             }
         }
         // stage('Deploy nginx') {
