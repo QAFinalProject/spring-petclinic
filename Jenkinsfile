@@ -5,6 +5,7 @@ pipeline {
             steps {
                 git 'https://github.com/QAFinalProject/spring-petclinic-rest.git'
                 sh 'sudo chmod +x docker-check-script.sh'
+                sh 'cd ~/spring-petclinic'
                 sh './docker-check-script.sh'
             }
         }
