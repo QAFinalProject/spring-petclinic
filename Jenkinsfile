@@ -26,8 +26,8 @@ pipeline {
                 sh '''sudo docker image prune
                 sudo docker system prune --all --volumes --force
                 sudo docker build -t jamalh8/spring-petclinic-angular:latest .
-                docker login --username $DOCKER_HUB_CREDS_USR --password $DOCKER_HUB_CREDS_PSW
-                docker push jamalh8/spring-petclinic-angular:latest
+                sudo docker login --username $DOCKER_HUB_CREDS_USR --password $DOCKER_HUB_CREDS_PSW
+                sudo docker push jamalh8/spring-petclinic-angular:latest
                 ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@3.10.246.212 sudo docker run --rm -d --name frontend -p 8080:8080 jamalh8/spring-petclinic-angular:latest'''
             }
         }
