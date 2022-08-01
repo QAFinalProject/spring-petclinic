@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 containerstate=$(docker inspect backend --format='{{.State.Status}}' 2> /dev/null)
