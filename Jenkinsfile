@@ -4,10 +4,11 @@ pipeline {
         stage('Clone down functional files') {
             steps {
                 git branch: 'main', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
+                sh 'sudo apt update'
                 sh 'scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-check-script.sh ubuntu@3.10.246.212:/home/ubuntu/'   
             }
         } 
-            
+
         stage('Deploy backend') {
             steps {              
                 git 'https://github.com/QAFinalProject/spring-petclinic-rest.git'
