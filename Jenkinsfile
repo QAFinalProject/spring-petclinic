@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy frontend') {
             steps {
                 git branch: 'master', url: 'https://github.com/QAFinalProject/spring-petclinic-angular.git'
-                sh '''ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@35.177.8.124 sudo docker build -t spring-petclinic-angular:latest .
+                sh '''sudo docker build -t spring-petclinic-angular:latest .
                 ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@35.177.8.124 sudo docker run --rm -d --name frontend -p 8080:8080 spring-petclinic-angular:latest'''
             }
         }
