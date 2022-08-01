@@ -5,6 +5,10 @@ services:
     # continer_name: backend
     networks:
       - petclinic-net
+    ports: 
+      - target: 9966
+        published: 9966
+        protocol: tcp
     deploy:
       replicas: 1
 
@@ -16,10 +20,10 @@ services:
       - petclinic-net
     deploy:
       replicas: 1
-    # ports: 
-    #   - target: 8080
-    #     published: 8080
-    #     protocol: tcp
+    ports: 
+      - target: 8080
+        published: 8080
+        protocol: tcp
     depends_on:
       - backend
 
