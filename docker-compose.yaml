@@ -14,7 +14,7 @@ services:
 
   frontend:
     image: ashtroboy/spring-petclinic-angular:latest
-    build: ./spring-petclinic-angular
+    # build: ./spring-petclinic-angular
     # container_name: frontend
     networks:
       - petclinic-net
