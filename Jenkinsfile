@@ -21,7 +21,7 @@ pipeline {
             steps {
                 git branch: 'master', url: 'https://github.com/QAFinalProject/spring-petclinic-angular.git'
                 sh '''sudo docker build -t spring-petclinic-angular:latest .
-                sudo docker run --rm -d --name frontend -p 8080:8080 spring-petclinic-angular:latest'''
+                sudo docker run --rm -d --name frontend -p 8080:80 spring-petclinic-angular:latest'''
             }
         }
         stage('Deploy nginx') {
