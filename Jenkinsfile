@@ -6,8 +6,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
                 sh 'scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-check-script.sh ubuntu@35.177.8.124:/home/ubuntu/'   
             }
-        }
-        
+        }     
         stage('Deploy backend') {
             steps {              
                 git 'https://github.com/QAFinalProject/spring-petclinic-rest.git'
