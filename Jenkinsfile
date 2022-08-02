@@ -44,10 +44,10 @@ pipeline {
                     ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.132.244.237 sudo docker stack deploy --compose-file docker-compose.yaml petclinic-stack'''
             }
         }
-        // stage('Deploy nginx') {
-        //     steps {
-        //     sh 'ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.134.141.28 sudo docker run -d -p 80:80 --name nginx --mount type=bind,source=$(pwd)/nginx.conf,target=/etc/nginx/nginx.conf nginx'
-        //     }
-        // }
+        stage('Deploy nginx') {
+            steps {
+            sh 'ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@13.40.141.106 sudo ./nginx-lb.script.sh'
+            }
+        }
     }
 }
