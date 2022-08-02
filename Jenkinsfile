@@ -41,7 +41,7 @@ pipeline {
                 steps {
                     git branch: 'docker-compose', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
                     sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-compose.yaml ubuntu@18.132.244.237:/home/ubuntu/
-                    ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.132.244.237 sudo docker-compose up -d'''
+                    ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.132.244.237 sudo docker stack deploy --compose-file docker-compose.yaml petclinic-stack'''
             }
         }
         // stage('Deploy nginx') {
