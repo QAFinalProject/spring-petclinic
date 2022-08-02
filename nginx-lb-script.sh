@@ -8,4 +8,4 @@ then
             docker stop nginx && docker rm nginx
         fi
 fi
-    docker run -d -p 80:80 --mount type=bind,source=$(pwd)/nginx-lb.conf,target=/etc/nginx/nginx.conf --name nginx nginx
+    docker run -d -p 80:80 --mount type=bind,source=$(pwd)/nginx.conf,target=/etc/nginx/nginx.conf --name nginx nginx
