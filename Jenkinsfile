@@ -5,7 +5,7 @@ pipeline {
         DOCKER_HUB_CREDS_PSW = credentials('DOCKER_HUB_PSW')
     }
     stages {
-            stage('Deploy frontend') {
+            stage('Ansible') {
                 steps {
                     git branch: 'docker-compose', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
                     sh sh 'ansible-playbook -i /home/ubuntu/spring-petclinic/ansible/inventory.yaml home/ubuntu/spring-petclinic/ansible/playbook.yaml'
