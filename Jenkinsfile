@@ -46,7 +46,7 @@ pipeline {
         }
         stage('Deploy nginx') {
             steps {
-            sh 'ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@13.40.141.106 ./nginx-lb.script.sh'
+            sh 'ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@13.40.141.106 ./home/ubuntu/nginx-lb.script.sh'
             }
         }
     }
