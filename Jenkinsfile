@@ -5,6 +5,12 @@ pipeline {
         DOCKER_HUB_CREDS_PSW = credentials('DOCKER_HUB_PSW')
     }
     stages {
+            stage('Deploy frontend') {
+                steps {
+                    git branch: 'docker-compose', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
+                    sh sh 'ansible-playbook -i /home/ubuntu/spring-petclinic/ansible/inventory.yaml home/ubuntu/spring-petclinic/ansible/playbook.yaml'
+            }
+        }
         // stage('Clone down functional files') {
         //     steps {
         //         git branch: 'main', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
@@ -34,8 +40,8 @@ pipeline {
             stage('Deploy frontend') {
                 steps {
                     git branch: 'docker-compose', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
-                    sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-compose.yaml ubuntu@3.10.246.212:/home/ubuntu/
-                    ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@3.10.246.212 sudo docker-compose up -d'''
+                    sh '''scp -i ~/.ssh/aws-key-london.pem /home/ubuntu/spring-petclinic/docker-compose.yaml ubuntu@18.132.244.237:/home/ubuntu/
+                    ssh -i /home/jenkins/.ssh/aws-key-london.pem ubuntu@18.132.244.237 sudo docker-compose up -d'''
             }
         }
         // stage('Deploy nginx') {

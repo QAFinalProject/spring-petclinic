@@ -2,13 +2,13 @@ all:
   children:
     manager:
       hosts:
-        13.40.141.102:
+        18.132.244.237:
     worker:
       hosts:
-        13.40.161.218:
+        35.178.253.175:
     nginx-lb:
       hosts:
-        3.9.191.176:
+        13.40.141.106:
 
   vars:
     ansible_user: ubuntu
