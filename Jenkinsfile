@@ -8,7 +8,7 @@ pipeline {
             stage('Ansible') {
                 steps {
                     git branch: 'docker-compose', url: 'https://github.com/QAFinalProject/spring-petclinic.git'
-                    sh 'ansible-playbook -i /home/ubuntu/spring-petclinic/ansible/inventory.yaml home/ubuntu/spring-petclinic/ansible/playbook.yaml'
+                    sh 'ansible-playbook -i ~/.jenkins/workspace/petclinic/ansible/inventory.yaml ~/.jenkins/workspace/petclinic/ansible/playbook.yaml'
             }
         }
         // stage('Clone down functional files') {
